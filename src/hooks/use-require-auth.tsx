@@ -10,7 +10,7 @@ export const useRequireAuth = (
   const router = useRouter();
 
   useEffect(() => {
-    if (auth?.user == null || typeof auth?.user === 'undefined') {
+    if (auth?.user === false) {
       router.push(redirectUrl);
     }
   }, [auth, router, redirectUrl]);

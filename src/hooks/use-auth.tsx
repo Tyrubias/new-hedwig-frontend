@@ -48,7 +48,7 @@ export const useAuth = (): CustomAuthContext | null => {
 
 // Provider hook that creates auth object and handles state
 const useProvideAuth = (): CustomAuthContext => {
-  const [user, setUser] = useState<firebase.User | null>(
+  const [user, setUser] = useState<boolean | firebase.User | null>(
     firebase.auth(hedwigFirebaseApp).currentUser,
   );
   const [idToken, setIdToken] = useState<string | null>(null);
@@ -97,7 +97,7 @@ const useProvideAuth = (): CustomAuthContext => {
       .auth(hedwigFirebaseApp)
       .signOut()
       .then(() => {
-        setUser(null);
+        setUser(false);
         setIdToken(null);
       });
   };
@@ -120,7 +120,7 @@ const useProvideAuth = (): CustomAuthContext => {
           // eslint-disable-next-line @typescript-eslint/no-floating-promises
           user.getIdToken().then((res) => setIdToken(res));
         } else {
-          setUser(null);
+          setUser(false);
           setIdToken(null);
         }
       });

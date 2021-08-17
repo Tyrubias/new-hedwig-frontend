@@ -3,7 +3,7 @@ import { Location, State } from 'history';
 import { NavigateFunction } from 'react-router-dom';
 
 export interface CombinedFirebaseAuth {
-  user: firebase.User | null;
+  user: boolean | firebase.User | null;
   idToken: string | null;
 }
 
