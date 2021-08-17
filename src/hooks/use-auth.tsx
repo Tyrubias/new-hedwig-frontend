@@ -23,7 +23,7 @@ const hedwigFirebaseApp = firebase.initializeApp(
 
 firebase
   .auth(hedwigFirebaseApp)
-  .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
   .catch(() => {});
 
 // Following code is adapted from https://usehooks.com/useAuth/
