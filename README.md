@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+# Welcome to Hedwig.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A revolutionary project designed from the ground up by Rice students for the Rice Community.
 
-## Available Scripts
+In this challenging time, it is imperative that we take all necessary precautions as we begin to navigate life inside the "new normal" of the post COVID-19 era. That is why we have built Hedwig, a web experience which enables Rice students, faculty, and staff to engage with campus food establishments in a safe and frictionless manner. In just a few clicks, any member of the Rice community can place an order and receive updates on its status in real-time; similarly, vendors can view and interact with new orders in real-time, with a comprehensive order management solution backed by a powerful publicly-traded company.
 
-In the project directory, you can run:
+## I'm a developer, how do I get started?
 
-### `npm start`
+You'll find two main folders in this project.
+First, on in the `backend` folder, here are the steps you'll need in order to run your backend:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Run `npm install`
+2. Copy the contents of `.env.example` into a new `.env` file, and then replace the parts with <PLACEHOLDER> to real values (ask your mentor for this information)
+3. You can run your application with `npm run dev`. Now, whenever you make changes to the application, the app will reload.
+   NOTE: Ensure that your backend is running on Port 3001. Otherwise, some local development settings on the frontend will not work.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In the `frontend` folder, here are the steps you'll need in order to run your frontend:
 
-### `npm test`
+1. Run `npm install`
+2. Use `npm run dev` in order to run your application. Now, whenever you make changes to the application, the app will reload.
+   NOTE: Ensure that your frontend is running on Port 3000. Otherwise, some local development settings (specifically related to authentication) will not work. If you have questions or need to run the application on a different port, please contact your mentor.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Great, I'm all set up - but now I want to make changes. Anything I should be aware of?
 
-### `npm run build`
+Thanks for asking! Yes, there is just one thing: make sure to create a NEW BRANCH before making changes! We will use the `master` and `develop` branches for production and staging, respectively; so these will not be directly editable. Furthermore, it is just good practice in development to not make direct changes to these branches. Instead, it is advisable to create a new branch when you'd like to build a new feature, and then use a Pull Request to merge your changes into the deployed version.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The typical workflow will look like this:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Create a new branch using `git checkout -b feature/<CUSTOM_BRANCH_NAME>`, and replace <CUSTOM_BRANCH_NAME>.
+2. Make your necessary commits, and once they're ready to be integrated with the deployed version, submit a pull request on Github.
+3. From there, your mentor will review the PR. They may recommend some changes or revisions that should be made, and in that case you will need to make another commit or two before the PR is approved.
+4. Once the PR is approved, the mentor will merge your PR into the deployed version, and now your code will be integrated in the deployed version of Hedwig. Congratulations!
