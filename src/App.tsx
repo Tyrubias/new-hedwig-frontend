@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
-function App(): JSX.Element {
+import { Routes as RoutesArray } from '@hedwig/components/Routes';
+import { ProvideAuth } from '@hedwig/hooks';
+import { GlobalFonts } from '@hedwig/shared/fonts.styles';
+
+const App = (): JSX.Element => {
+  const routes = useRoutes(RoutesArray);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalFonts />
+      <Router>
+        <ProvideAuth>{routes}</ProvideAuth>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;

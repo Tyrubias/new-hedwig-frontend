@@ -21,8 +21,13 @@ const hedwigFirebaseApp = firebase.initializeApp(
   'Hedwig',
 );
 
+firebase
+  .auth(hedwigFirebaseApp)
+  .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  .catch(() => {});
+
 // Following code is adapted from https://usehooks.com/useAuth/
-const authContext = createContext<CustomAuthContext>(null as any);
+const authContext = createContext<CustomAuthContext | null>(null);
 
 // Provider component that wraps your app and makes auth object ...
 // ... available to any child component that calls useAuth().
@@ -37,13 +42,15 @@ export const ProvideAuth = ({
 
 // Hook for child components to get the auth object ...
 // ... and re-render when it changes.
-export const useAuth = (): CustomAuthContext => {
+export const useAuth = (): CustomAuthContext | null => {
   return useContext(authContext);
 };
 
 // Provider hook that creates auth object and handles state
 const useProvideAuth = (): CustomAuthContext => {
-  const [user, setUser] = useState<firebase.User | null>(null);
+  const [user, setUser] = useState<firebase.User | null>(
+    firebase.auth(hedwigFirebaseApp).currentUser,
+  );
   const [idToken, setIdToken] = useState<string | null>(null);
   const samlProvider = new firebase.auth.SAMLAuthProvider(
     'saml.rice-shibboleth',
@@ -100,6 +107,11 @@ const useProvideAuth = (): CustomAuthContext => {
   // ... component that utilizes this hook to re-render with the ...
   // ... latest auth object.
   useEffect(() => {
+    firebase
+      .auth(hedwigFirebaseApp)
+      .currentUser?.getIdToken()
+      .then((token) => setIdToken(token));
+
     const unsubscribe = firebase
       .auth(hedwigFirebaseApp)
       .onIdTokenChanged((user) => {

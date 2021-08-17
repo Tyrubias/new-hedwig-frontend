@@ -21,6 +21,7 @@
     "@types/node": "^12.20.19",
     "@types/react": "^17.0.18",
     "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.12",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "craco-alias": "^3.0.1",
     "eslint-config-prettier": "^8.3.0",

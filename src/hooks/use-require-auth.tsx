@@ -3,12 +3,14 @@ import { useEffect } from 'react';
 import { useAuth } from './use-auth';
 import { useRouter } from './use-router';
 
-export const useRequireAuth = (redirectUrl = '/login'): CustomAuthContext => {
+export const useRequireAuth = (
+  redirectUrl = '/login',
+): CustomAuthContext | null => {
   const auth = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (auth.user == null) {
+    if (auth?.user == null || typeof auth?.user === 'undefined') {
       router.push(redirectUrl);
     }
   }, [auth, router]);
