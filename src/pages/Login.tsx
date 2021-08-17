@@ -59,8 +59,6 @@ export const Login = (): JSX.Element => {
   const router = useRouter();
 
   return auth == null || typeof auth === 'undefined' || auth?.user == null ? (
-    <Navigate to="/eat" />
-  ) : (
     <MainDiv>
       <ElemDiv>
         <Logo src={logo} />
@@ -74,5 +72,7 @@ export const Login = (): JSX.Element => {
         </LoginButton>
       </ElemDiv>
     </MainDiv>
+  ) : (
+    <Navigate to="/eat" />
   );
 };

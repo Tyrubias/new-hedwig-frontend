@@ -13,7 +13,7 @@ export const useRequireAuth = (
     if (auth?.user == null || typeof auth?.user === 'undefined') {
       router.push(redirectUrl);
     }
-  }, [auth, router]);
+  }, [auth, router, redirectUrl]);
 
   return auth;
 };
